@@ -1,81 +1,69 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตรวจสอบ QR Code หน้างาน</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://unpkg.com/html5-qrcode@2.3.7/minified/html5-qrcode.min.js"></script>
-<style>
-  body { background:#f0f2f5; }
-  #reader { width:100%; max-width:400px; margin:auto; }
-  #scanResult { margin-top:20px; font-size:1.2rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>QR Check-in หน้างาน</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    body {
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    #reader {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+    #statusMessage {
+      font-size: 1.2rem;
+      text-align: center;
+      min-height: 2rem;
+    }
+  </style>
 </head>
-<body class="p-3">
+<body>
+  <h2>ตรวจสอบ QR Code หน้างาน</h2>
+  <div id="reader"></div>
+  <div id="statusMessage"></div>
 
-<h2 class="text-center mb-3">ตรวจสอบ QR Code หน้างาน</h2>
+  <script>
+    const backendUrl = "https://script.google.com/macros/s/AKfycbzTEM9RR8lPOiIL4u3Ypg_BZOFj_DScxojCjvtHTDhR3carVCAKew6obakc0SP513GknA/exec"; // URL ของ Google Apps Script Web App
+    const statusMessage = document.getElementById("statusMessage");
 
-<div id="reader"></div>
-<div id="scanResult" class="text-center"></div>
-<div class="text-center mt-3">
-  <button id="confirmBtn" class="btn btn-success" disabled>✅ ยืนยันการเข้าร่วม</button>
-</div>
+    function sendUIDToBackend(uid) {
+      statusMessage.textContent = "กำลังตรวจสอบ UID: " + uid;
+      fetch(backendUrl + "?uid=" + encodeURIComponent(uid))
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            statusMessage.innerHTML = `<span class="text-success">✅ ${data.fullname} เช็คอินเรียบร้อย</span>`;
+          } else {
+            statusMessage.innerHTML = `<span class="text-danger">❌ ${data.message}</span>`;
+          }
+        })
+        .catch(err => {
+          statusMessage.innerHTML = `<span class="text-danger">❌ เกิดข้อผิดพลาด: ${err}</span>`;
+        });
+    }
 
-<script>
-const backendUrl = "https://script.google.com/macros/s/AKfycbzTEM9RR8lPOiIL4u3Ypg_BZOFj_DScxojCjvtHTDhR3carVCAKew6obakc0SP513GknA/exec";
-let currentData = null;
-
-// เริ่มสแกน QR Code
-function onScanSuccess(decodedText, decodedResult){
-    document.getElementById('scanResult').innerHTML = "กำลังตรวจสอบ...";
-    currentData = null;
-    fetch(backendUrl + "?uid=" + encodeURIComponent(decodedText))
-      .then(r => r.json())
-      .then(data=>{
-        if(data.success){
-          currentData = data;
-          document.getElementById('scanResult').innerHTML = 
-            `ชื่อ: ${data.fullname} <br> UID: ${data.uid} <br>สถานะ: ${data.status}`;
-          document.getElementById('confirmBtn').disabled = (data.status === 'checked-in');
-        } else {
-          document.getElementById('scanResult').innerHTML = "❌ " + data.message;
-          document.getElementById('confirmBtn').disabled = true;
-        }
-      }).catch(err=>{
-        document.getElementById('scanResult').innerHTML = "❌ เกิดข้อผิดพลาด";
-        console.error(err);
-      });
-}
-
-// ยืนยันเข้าร่วม
-document.getElementById('confirmBtn').addEventListener('click', ()=>{
-  if(!currentData) return;
-  fetch(backendUrl, {
-    method:"POST",
-    body:new URLSearchParams({uid: currentData.uid, rowIndex: currentData.rowIndex})
-  }).then(r=>r.json())
-    .then(data=>{
-      if(data.success){
-        document.getElementById('scanResult').innerHTML = "✅ เข้าร่วมเรียบร้อยแล้ว";
-        document.getElementById('confirmBtn').disabled = true;
-      } else {
-        document.getElementById('scanResult').innerHTML = "❌ " + data.message;
+    const html5QrcodeScanner = new Html5Qrcode("reader");
+    html5QrcodeScanner.start(
+      { facingMode: "environment" }, 
+      { fps: 10, qrbox: 250 },
+      (decodedText, decodedResult) => {
+        html5QrcodeScanner.stop().then(() => {
+          sendUIDToBackend(decodedText);
+        });
+      },
+      (errorMessage) => {
+        // console.log(errorMessage);
       }
-    }).catch(err=>{
-      document.getElementById('scanResult').innerHTML = "❌ เกิดข้อผิดพลาด";
-      console.error(err);
-    });
-});
-
-// เริ่มกล้อง
-let html5QrcodeScanner = new Html5Qrcode("reader");
-html5QrcodeScanner.start(
-  { facingMode: "environment" },
-  { fps:10, qrbox:250 },
-  onScanSuccess
-).catch(err=>console.error(err));
-
-</script>
+    );
+  </script>
 </body>
 </html>
