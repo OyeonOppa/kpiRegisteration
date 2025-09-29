@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    responseMessage.innerHTML = `<div class="alert alert-info p-2">กำลังลงทะเบียน... กรุณารอสักครู่</div>`;
-    qrArea.innerHTML = `<div class="muted-small">กำลังสร้าง QR…</div>`;
-    statusText.textContent = "กำลังประมวลผล...";
+    responseMessage.innerHTML = `<div class="alert alert-info p-2">Registering... Please wait.</div>`;
+    qrArea.innerHTML = `<div class="muted-small">Generating QR Code…</div>`;
+    statusText.textContent = "Processing...";
     uidText.textContent = "-";
 
     const fd = new FormData(form);
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (data.success) {
-        responseMessage.innerHTML = `<div class="alert alert-success p-2">✅ ลงทะเบียนสำเร็จแล้ว</div>`;
+        responseMessage.innerHTML = `<div class="alert alert-success p-2">✅ Registration Completed Successfully</div>`;
         statusText.textContent = "ลงทะเบียนแล้ว";
         uidText.textContent = data.uid || "-";
         emailText.textContent = form.email.value || "-";
