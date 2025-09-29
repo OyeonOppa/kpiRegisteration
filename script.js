@@ -78,7 +78,7 @@
 
       if (data.success) {
         responseMessage.innerHTML = `<div class="alert alert-success p-2">✅ Registration Completed Successfully</div>`;
-        statusText.textContent = "ลงทะเบียนแล้ว";
+        statusText.textContent = "Registered";
         uidText.textContent = data.uid || "-";
         emailText.textContent = form.email.value || "-";
         phoneText.textContent = form.phone.value || "-";
