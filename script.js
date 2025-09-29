@@ -14,37 +14,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const carPlateBox = document.getElementById("carPlateBox");
   const attendAfternoon = document.getElementById("attendAfternoon");
   const seminarRooms = document.getElementById("seminarRooms");
+  const prefix = document.getElementById("prefix");
+  const customPrefixBox = document.getElementById("customPrefixBox");
+  const customPrefix = document.getElementById("customPrefix");
 
+  // รถ
   bringCar.addEventListener("change", () => {
-    if (bringCar.value === "ใช่") {
+    if (bringCar.value === "Yes") { // ✅ ใช้ value "Yes" ตรงกับ option
       carPlateBox.classList.remove("d-none");
     } else {
       carPlateBox.classList.add("d-none");
     }
   });
 
+// ช่วงบ่าย
   attendAfternoon.addEventListener("change", () => {
-    if (attendAfternoon.value === "ใช่") {
+    if (attendAfternoon.value === "Yes") { // ✅ ใช้ value "Yes"
       seminarRooms.classList.remove("d-none");
     } else {
       seminarRooms.classList.add("d-none");
     }
   });
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const prefix = document.getElementById("prefix");
   const customPrefixBox = document.getElementById("customPrefixBox");
 
+  // Prefix อื่น ๆ
   prefix.addEventListener("change", () => {
-    if (prefix.value === "อื่นๆ") {
+    if (prefix.value === "Other") { // ✅ ใช้ value "Other"
       customPrefixBox.classList.remove("d-none");
-      document.getElementById("customPrefix").setAttribute("required", "required");
+      customPrefix.setAttribute("required", "required");
     } else {
       customPrefixBox.classList.add("d-none");
-      document.getElementById("customPrefix").removeAttribute("required");
+      customPrefix.removeAttribute("required");
     }
   });
+});
 
   // โค้ดส่วนรถ + ห้องสัมมนา ที่ผมให้ไว้ก่อนหน้านี้ยังใช้ได้เหมือนเดิม
 });

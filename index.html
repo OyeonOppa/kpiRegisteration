@@ -26,10 +26,11 @@
         <div>
 <div class="header">
   <div class="brand-badge">
-    <img src="https://kpi.ac.th/wp-content/uploads/2025/09/LOGO_KPI-Congress-27-scaled.webp" alt="KPI Logo">
+    <center><img src="https://kpi.ac.th/wp-content/uploads/2025/09/LOGO_KPI-Congress-27-scaled.webp" alt="KPI Logo"></center><br>
   </div>
   <div class="header-text">
-    <h1 class="title">การประชุมวิชาการสถาบันพระปกเกล้า ครั้งที่ 27 ประจำปี 2568</h1>
+    <h1 class="title">
+    "KPI Academic Conference 27th (2025)" <br>การประชุมวิชาการสถาบันพระปกเกล้า <br>ครั้งที่ 27 ประจำปี 2568 <br></h1>
     <h3>(Environmental Democracy and Diplomacy :<br>
       A Platform for Thailand in the Transformative World)
     </h3>
@@ -39,97 +40,119 @@
   </div>
 </div>
 
-
-          <form id="registerForm" class="mt-3">
+<form id="registerForm" class="mt-3">
   <div class="row g-3">
-    <!-- คำนำหน้า -->
+    <!-- Prefix -->
     <div class="col-md-4">
-      <label for="prefix" class="form-label">คำนำหน้า</label>
+      <label for="prefix" class="form-label">
+        Prefix <span class="text-muted">(คำนำหน้า)</span>
+      </label>
       <select id="prefix" name="prefix" class="form-control" required>
-        <option value="">-- เลือก --</option>
-        <option value="นาย">นาย</option>
-        <option value="นาง">นาง</option>
-        <option value="นางสาว">นางสาว</option>
-        <option value="อื่นๆ">อื่นๆ</option>
+        <option value="">-- Select / เลือก --</option>
+        <option value="Mr.">Mr. (นาย)</option>
+        <option value="Mrs.">Mrs. (นาง)</option>
+        <option value="Ms.">Ms. (นางสาว)</option>
+        <option value="Other">Other (อื่นๆ)</option>
       </select>
     </div>
 
-<div class="col-md-4 d-none" id="customPrefixBox">
-  <label for="customPrefix" class="form-label">กรอกคำนำหน้า</label>
-  <input type="text" id="customPrefix" name="customPrefix" class="form-control" />
-</div>
+    <!-- Custom Prefix -->
+    <div class="col-md-4 d-none" id="customPrefixBox">
+      <label for="customPrefix" class="form-label">
+        Custom Prefix <span class="text-muted">(กรอกคำนำหน้า)</span>
+      </label>
+      <input type="text" id="customPrefix" name="customPrefix" class="form-control" />
+    </div>
 
-    <!-- ชื่อ -->
+    <!-- First Name -->
     <div class="col-md-4">
-      <label for="firstname" class="form-label">ชื่อ</label>
+      <label for="firstname" class="form-label">
+        First Name <span class="text-muted">(ชื่อ)</span>
+      </label>
       <input type="text" id="firstname" name="firstname" class="form-control" required />
     </div>
 
-    <!-- สกุล -->
+    <!-- Last Name -->
     <div class="col-md-4">
-      <label for="lastname" class="form-label">นามสกุล</label>
+      <label for="lastname" class="form-label">
+        Last Name <span class="text-muted">(นามสกุล)</span>
+      </label>
       <input type="text" id="lastname" name="lastname" class="form-control" required />
     </div>
 
     <!-- Email -->
     <div class="col-md-6">
-      <label for="email" class="form-label">อีเมล</label>
+      <label for="email" class="form-label">
+        Email <span class="text-muted">(อีเมล)</span>
+      </label>
       <input type="email" id="email" name="email" class="form-control" required />
     </div>
 
     <!-- Phone -->
     <div class="col-md-6">
-      <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+      <label for="phone" class="form-label">
+        Phone Number <span class="text-muted">(เบอร์โทรศัพท์)</span>
+      </label>
       <input type="tel" id="phone" name="phone" class="form-control" />
     </div>
 
     <!-- Organization -->
     <div class="col-12">
-      <label for="organization" class="form-label">หน่วยงาน / บริษัท</label>
+      <label for="organization" class="form-label">
+        Organization / Company <span class="text-muted">(หน่วยงาน / บริษัท)</span>
+      </label>
       <input type="text" id="organization" name="organization" class="form-control" />
     </div>
 
-    <!-- นำรถมาเอง -->
+    <!-- Bring Car -->
     <div class="col-md-6">
-      <label class="form-label">นำรถมาเองหรือไม่?</label>
+      <label class="form-label">
+        If you would like to reserve a parking space, please provide your car plate number <span class="text-muted">(หากต้องการสำรองที่จอดรถ กรุณาระบุหมายเลขทะเบียนรถ)</span>
+      </label>
       <select id="bringCar" name="bringCar" class="form-control">
-        <option value="">-- เลือก --</option>
-        <option value="ไม่">ไม่</option>
-        <option value="ใช่">ใช่</option>
+        <option value="">-- Select / เลือก --</option>
+        <option value="No">No (ไม่)</option>
+        <option value="Yes">Yes (ใช่)</option>
       </select>
     </div>
 
-    <!-- เลขทะเบียนรถ (ซ่อนเริ่มต้น) -->
+    <!-- Car Plate -->
     <div class="col-md-6 d-none" id="carPlateBox">
-      <label for="carPlate" class="form-label">เลขทะเบียนรถ</label>
+      <label for="carPlate" class="form-label">
+        Car Plate Number <span class="text-muted">(เลขทะเบียนรถ)</span>
+      </label>
       <input type="text" id="carPlate" name="carPlate" class="form-control" />
     </div>
 
-    <!-- อยู่สัมมนาช่วงบ่ายต่อ -->
+    <!-- Afternoon Session -->
     <div class="col-12">
-      <label class="form-label">อยู่สัมมนาช่วงบ่ายต่อหรือไม่?</label>
+      <label class="form-label">
+        Will you attend the afternoon session? <span class="text-muted">(อยู่สัมมนาช่วงบ่ายต่อหรือไม่)</span>
+      </label>
       <select id="attendAfternoon" name="attendAfternoon" class="form-control">
-        <option value="">-- เลือก --</option>
-        <option value="ไม่">ไม่</option>
-        <option value="ใช่">ใช่</option>
+        <option value="">-- Select / เลือก --</option>
+        <option value="No">No (ไม่)</option>
+        <option value="Yes">Yes (ใช่)</option>
       </select>
     </div>
 
-    <!-- ห้องสัมมนา (multiple choice, ซ่อนเริ่มต้น) -->
+    <!-- Seminar Rooms -->
     <div class="col-12 d-none" id="seminarRooms">
-      <label class="form-label">เลือกห้องสัมมนาที่ต้องการ (เลือกได้มากกว่า 1)</label>
+      <label class="form-label">
+        Select Seminar Room(s) <span class="text-muted">(เลือกห้องสัมมนาที่ต้องการ)</span>
+      </label>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="room1" name="seminarRooms[]" value="ห้องสัมมนา 1">
+        <input class="form-check-input" type="checkbox" id="room1" name="seminarRooms[]" value="Seminar Room 1">
         <label class="form-check-label" for="room1">
-          ห้องสัมมนาที่ 1: ห้องประชุมสัมมนา B1-4 ชั้น B1 อาคารรัฐสภา <br>
-          การอภิปราย เรื่อง “บทบาทรัฐสภากับความยุติธรรมด้านสิ่งแวดล้อม”
+          Seminar Room 1: B1-4, Parliament Building <br>
+          <span class="text-muted">ห้องสัมมนาที่ 1: การอภิปรายเรื่อง “บทบาทรัฐสภากับความยุติธรรมด้านสิ่งแวดล้อม”</span>
         </label>
       </div>
       <div class="form-check mt-2">
-        <input class="form-check-input" type="checkbox" id="room2" name="seminarRooms[]" value="ห้องสัมมนา 2">
+        <input class="form-check-input" type="checkbox" id="room2" name="seminarRooms[]" value="Seminar Room 2">
         <label class="form-check-label" for="room2">
-          ห้องสัมมนาที่ 2: ห้องประชุมสัมมนา B1-5 ชั้น B1 <br>
-          การอภิปราย เรื่อง “แนวทางพหุภาคีและการทูตด้านสิ่งแวดล้อม”
+          Seminar Room 2: B1-5, Parliament Building <br>
+          <span class="text-muted">ห้องสัมมนาที่ 2: การอภิปรายเรื่อง “แนวทางพหุภาคีและการทูตด้านสิ่งแวดล้อม”</span>
         </label>
       </div>
     </div>
@@ -141,18 +164,24 @@
   <div class="pdpa-box">
     <input type="checkbox" id="pdpaConsent" required />
     <label for="pdpaConsent">
-      ฉันได้อ่านและยอมรับ
-      <a href="https://kpi.ac.th/wp-content/uploads/2025/02/%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%84%E0%B8%B8%E0%B9%89%E0%B8%A1%E0%B8%84%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2.pdf" target="_blank">นโยบาย PDPA</a>
+      I have read and agree with the 
+      <a href="https://kpi.ac.th/wp-content/uploads/2025/02/%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%84%E0%B8%B8%E0%B9%89%E0%B8%A1%E0%B8%84%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%9A%E0%B8%B8%E0%B8%84%E0%B8%84%E0%B8%A5%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2.pdf" target="_blank">
+        PDPA Policy <span class="text-muted">(นโยบายคุ้มครองข้อมูลส่วนบุคคล)</span>
+      </a>
     </label>
   </div>
 
   <div class="d-flex align-items-center gap-3 mt-4">
-    <button type="submit" class="btn btn-submit">ลงทะเบียนและรับ QR</button>
-    <div class="muted-small">หรือสแกนหน้างานด้วย UID</div>
+    <button type="submit" class="btn btn-submit">
+      Register & Get QR <br><span class="text-muted">(ลงทะเบียนและรับ QR)</span>
+    </button>
+    <div class="muted-small">or scan at the venue with UID <span class="text-muted">(หรือสแกนหน้างานด้วย UID)</span></div>
   </div>
 
   <div id="responseMessage" class="response"></div>
 </form>
+
+
 
 
           <div class="mt-4 note">
