@@ -9,6 +9,48 @@
   const emailText = document.getElementById('emailText');
   const phoneText = document.getElementById('phoneText');
 
+document.addEventListener("DOMContentLoaded", () => {
+  const bringCar = document.getElementById("bringCar");
+  const carPlateBox = document.getElementById("carPlateBox");
+  const attendAfternoon = document.getElementById("attendAfternoon");
+  const seminarRooms = document.getElementById("seminarRooms");
+
+  bringCar.addEventListener("change", () => {
+    if (bringCar.value === "ใช่") {
+      carPlateBox.classList.remove("d-none");
+    } else {
+      carPlateBox.classList.add("d-none");
+    }
+  });
+
+  attendAfternoon.addEventListener("change", () => {
+    if (attendAfternoon.value === "ใช่") {
+      seminarRooms.classList.remove("d-none");
+    } else {
+      seminarRooms.classList.add("d-none");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const prefix = document.getElementById("prefix");
+  const customPrefixBox = document.getElementById("customPrefixBox");
+
+  prefix.addEventListener("change", () => {
+    if (prefix.value === "อื่นๆ") {
+      customPrefixBox.classList.remove("d-none");
+      document.getElementById("customPrefix").setAttribute("required", "required");
+    } else {
+      customPrefixBox.classList.add("d-none");
+      document.getElementById("customPrefix").removeAttribute("required");
+    }
+  });
+
+  // โค้ดส่วนรถ + ห้องสัมมนา ที่ผมให้ไว้ก่อนหน้านี้ยังใช้ได้เหมือนเดิม
+});
+
+
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     responseMessage.innerHTML = `<div class="alert alert-info p-2">กำลังลงทะเบียน... กรุณารอสักครู่</div>`;
