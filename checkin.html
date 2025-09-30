@@ -1,0 +1,31 @@
+<div id="reader" style="width:300px;"></div>
+<div id="result"></div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+  const checkinURL = "https://script.google.com/macros/s/AKfycbwEdNtBCTyvunVtwL6B8ERyrJZiwEnnwOYIX8kmQSWdYBVyCmvLOh31AM1SrWzULZj8/exec";
+
+  function onScanSuccess(decodedText) {
+    fetch(checkinURL + "?uid=" + encodeURIComponent(decodedText))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          if (data.status === "checked_in") {
+            document.getElementById("result").innerHTML = 
+              "✅ เช็คอินสำเร็จ: " + data.name + " เวลา " + data.time;
+          } else if (data.status === "already_checked") {
+            document.getElementById("result").innerHTML = 
+              "⚠️ เช็คอินแล้วเมื่อ " + data.time;
+          }
+        } else {
+          document.getElementById("result").innerHTML = "❌ " + data.message;
+        }
+      });
+  }
+
+  const html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+    fps: 10,
+    qrbox: 250
+  });
+  html5QrcodeScanner.render(onScanSuccess);
+</script>
