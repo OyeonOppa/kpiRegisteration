@@ -55,7 +55,7 @@
 
           <form id="registerForm" class="mt-3">
             <fieldset>
-              <legend class="h5">ข้อมูลผู้เข้าร่วม (Participant Information)</legend>
+              <legend class="h5">Participant Information (ข้อมูลผู้เข้าร่วม)</legend>
               <div class="row g-3">
                 <!-- Prefix -->
                 <div class="col-md-4">
@@ -173,7 +173,7 @@
             </fieldset>
 
             <fieldset class="mt-4">
-              <legend class="h5">ข้อมูลเพิ่มเติม (Additional Information)</legend>
+              <legend class="h5">Additional Information (ข้อมูลเพิ่มเติม)</legend>
               <div class="row g-3">
                 <!-- Bring Car -->
                 <div class="col-md-6">
@@ -203,7 +203,7 @@
                 <!-- Afternoon Session -->
                 <div class="col-12">
                   <label class="form-label">
-                    Do you wish to continue attending the seminar during 2:00 – 4:00 p.m.? <span class="text-muted"><br>(ท่านประสงค์เข้าร่วมงานสัมมนาในช่วงเวลา 14:00 - 16:00 น. ต่อหรือไม่ ?)</span>
+                    Do you wish to continue attending the seminar during 2:45 – 4:00 p.m.? <span class="text-muted"><br>(ท่านประสงค์เข้าร่วมงานสัมมนาในช่วงเวลา 14:45 - 16:00 น. ต่อหรือไม่ ?)</span>
                   </label>
                   <select id="attendAfternoon" name="attendAfternoon" class="form-control" required>
                     <option value="">-- Select / เลือก --</option>
@@ -220,9 +220,9 @@
                   <div class="form-check">
                     <input
                       class="form-check-input"
-                      type="checkbox"
+                      type="radio"
                       id="room1"
-                      name="seminarRooms[]"
+                      name="seminarRooms"
                       value="Seminar Room 1"
                     />
                     <label class="form-check-label" for="room1">
@@ -235,9 +235,9 @@
                   <div class="form-check mt-2">
                     <input
                       class="form-check-input"
-                      type="checkbox"
+                      type="radio"
                       id="room2"
-                      name="seminarRooms[]"
+                      name="seminarRooms"
                       value="Seminar Room 2"
                     />
                     <label class="form-check-label" for="room2">
