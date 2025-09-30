@@ -81,6 +81,18 @@ form.addEventListener("submit", async (e) => {
 
   const fd = new FormData(form);
 
+  // ดึง checkbox ทั้งหมดที่เลือก
+  const checkedRooms = Array.from(
+    document.querySelectorAll("input[name='seminarRooms[]']:checked")
+  ).map(input => input.value);
+
+  // ลบค่าเดิมออก
+  fd.delete("seminarRooms[]");
+
+  // ใส่ทุกค่าที่เลือกกลับเข้า FormData
+  checkedRooms.forEach(room => fd.append("seminarRooms[]", room));
+  // -----------------
+
   try {
     const res = await fetch(scriptURL, { method: "POST", body: fd });
     let data;
@@ -110,7 +122,6 @@ form.addEventListener("submit", async (e) => {
       emailText.textContent = form.email.value || "-";
       phoneText.textContent = form.phone.value || "-";
 
-      // แสดง QR
       const qrUrl =
         data.qrUrl ||
         (data.qr &&
@@ -125,8 +136,6 @@ form.addEventListener("submit", async (e) => {
       }
 
       form.reset();
-
-      // reset hidden fields state
       document.getElementById("carPlateBox").classList.add("d-none");
       document.getElementById("seminarRooms").classList.add("d-none");
       document.getElementById("customPrefixBox").classList.add("d-none");
