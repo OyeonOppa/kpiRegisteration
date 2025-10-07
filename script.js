@@ -1,6 +1,6 @@
 // --- เปลี่ยนเป็น URL /exec ของคุณ ---
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbx9CkM4mstI5yljtkulZQDtSBfE_fP23RTvWwNW0JgiYkzGVQdlOGwS5mPFbUf7pxpo/exec";
+  "https://script.google.com/macros/s/AKfycbwA-eTV_9r8O9zf-kQ3pAoPcqK-Qdh3Z65xht1FQvjJa4HZtF7McvJSjyV2fh71nnJb/exec";
   
 
 const form = document.getElementById("registerForm");
