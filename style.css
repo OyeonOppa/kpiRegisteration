@@ -10,7 +10,7 @@
 
 html,body{
   height:100%;
-  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    font-family: 'Kanit', sans-serif !important;
 }
 
 .header {
@@ -170,3 +170,4 @@ form .form-control {
   font-weight: 600;
   text-decoration: underline;
 }
+
